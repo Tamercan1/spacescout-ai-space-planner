@@ -146,19 +146,3 @@ def get_solar_flares(start_date, end_date):
         "count": len(flares),
         "flares": flares
     }
-
-
-# TEST PROTOTYPES HERE  
-def main():
-    # result = get_astronomy_picture()
-    # print(json.dumps(result, indent=4))
-
-    # result = search_near_earth_objects("2026-09-01", "2026-09-03")
-    # print(json.dumps(result, indent=4))
-
-    result = get_solar_flares("2026-08-29", "2026-08-30")
-    print(json.dumps(result, indent=4))
-
-
-if __name__ == "__main__":
-    main()

@@ -1,38 +1,98 @@
 # AI Space Planner
 
-AI Space Planner is a web application that allows users to explore space-related information through natural-language requests. Instead of requiring users to know which NASA API to use or how to structure a query, the application uses an AI model to interpret the user's request, determine what information is needed, retrieve relevant information from NASA APIs, and organize the results into a structured Space Plan.
+AI Space Planner is a web application that lets users explore space-related information through natural-language requests.
 
-The application provides a React-based interface where users can submit questions, view generated space discoveries, explore NASA media and information, and revisit previously generated plans through a history sidebar. User accounts and saved plans are handled by a Django backend and database.
+Instead of requiring users to know which NASA API to use or how to structure a query, the application uses an AI model to interpret the request, determine what information is needed, retrieve relevant NASA data, and organize the results into a structured Space Plan.
+
+Users can:
+
+* Ask natural-language questions about space
+* Discover NASA information and media
+* View structured discovery cards
+* Save generated Space Plans
+* Revisit previous plans
+* View the original prompt used for a plan
+* Delete saved plans
+* Manage their account through authentication
+
+The application uses a React frontend and Django REST backend with database persistence and JWT authentication.
+
+---
 
 ## Distinctiveness and Complexity
 
-AI Space Planner is distinct from the other CS50W projects because it is neither a social network nor an e-commerce application. Its primary purpose is to act as an AI-assisted interface for exploring external scientific data, rather than connecting users socially or facilitating transactions.
+AI Space Planner is distinct from the other CS50W projects because it is neither a social network nor an e-commerce application. Its main purpose is to provide an AI-assisted interface for exploring external scientific data.
 
-The application is also substantially different from the course's earlier projects. It does not primarily consist of creating, editing, or displaying user-generated posts, listings, messages, or products. Instead, the central feature is a multi-step AI and API workflow. A user provides a natural-language request, the backend sends the request to an AI planner, the planner determines what information is relevant, appropriate NASA APIs are called, the returned information is organized into structured data, and the resulting Space Plan is saved to the database and displayed by the React frontend.
+The central workflow is more complex than a basic CRUD application:
 
-The project is more complex than a typical CRUD application because several independent systems must work together. The Django backend handles authentication, authorization, database persistence, API endpoints, and the application logic. The AI layer interprets natural-language requests and produces structured planning information. Pydantic is used to validate structured data before it is stored. The backend also communicates with multiple NASA APIs, including APOD, NeoWs, and DONKI. Finally, the React frontend manages authentication state, API communication, loading and error states, responsive navigation, history, and interactive discovery cards.
+1. The user submits a natural-language request.
+2. Django receives the request.
+3. The AI planner interprets the request.
+4. The planner determines which NASA data is relevant.
+5. The appropriate NASA APIs are called.
+6. The returned information is organized into structured data.
+7. Pydantic validates the structured result.
+8. The Space Plan is saved to the Django database.
+9. React retrieves and displays the resulting discoveries.
 
-The project also requires coordination between multiple layers of the application. For example, when a user asks a question about space, the request travels from the React frontend to Django, through the AI planning process, potentially to one or more NASA APIs, back through the backend where the result is structured and stored, and finally back to React for presentation. This makes the application more than a simple frontend consuming a single API.
+The application integrates several independent systems, including Django, a relational database, JWT authentication, an AI model, Pydantic validation, multiple NASA APIs, and a React/TypeScript frontend.
 
-The application includes user authentication and user-specific data access as well. Each user's saved Space Plans are associated with their account, and backend authorization prevents users from retrieving or deleting plans belonging to another user.
+The backend also implements user-specific data access. Saved Space Plans belong to individual users, and backend authorization prevents users from retrieving or deleting plans belonging to another account.
+
+This makes the project substantially different from applications primarily focused on posts, messages, listings, bidding, or other traditional CRUD workflows.
+
+---
 
 ## Features
 
-* User registration and login
-* JWT-based authentication
-* Natural-language space requests
+### Authentication
+
+* User registration
+* User login
+* JWT authentication
+* Access-token refresh
+* Protected routes
+* User-specific Space Plan history
+
+### AI Space Planner
+
+* Natural-language prompts
 * AI-assisted planning
-* Integration with NASA APOD, NeoWs, and DONKI APIs
-* Structured Space Plans
+* Structured planner output
+* Pydantic validation
+* General and space-related question handling
+
+### NASA Integration
+
+The application can retrieve information from multiple NASA services:
+
+* NASA Astronomy Picture of the Day (APOD)
+* NASA Near Earth Object Web Service (NeoWs)
+* NASA DONKI
+* NASA media associated with discoveries
+
+### Space Plans
+
+* Generate a structured Space Plan
+* Save plans to the database
+* View previous plans
+* View the original prompt
+* Delete plans
 * Interactive discovery cards
-* NASA images and other available media
-* Saved plan history
-* View previously generated plans
-* View the original prompt used to create a plan
-* Delete saved plans
-* Responsive history sidebar
-* Loading and error states
-* Mobile-responsive interface
+* Expand discovery details
+
+### User Interface
+
+* React and TypeScript
+* Responsive layout
+* Mobile-friendly navigation
+* Toggleable history sidebar
+* Loading states
+* Error states
+* AI processing/status feedback
+* Responsive discovery cards
+
+---
 
 ## Technologies Used
 
@@ -55,150 +115,299 @@ The application includes user authentication and user-specific data access as we
 
 ### External Services
 
-* Google Gemini
-* Openrouter
-* Configurable AI provider
-* NASA APOD API
-* NASA Near Earth Object Web Service (NeoWs)
-* NASA DONKI
+* OpenRouter
+* NASA APIs
 
-## File Structure
+---
 
-The project is divided into a Django backend and a React frontend.
+### Important Backend Files
 
-### Backend
+**`backend/manage.py`**
+Django's command-line entry point. It is used for running the development server, migrations, and other Django commands.
 
-`backend/manage.py`
-The Django command-line entry point used to run the development server, migrations, and other Django commands.
+**`backend/api/engine/space_planner.py`**
+Contains the main Space Planner logic. It processes the user's request, interacts with the configured AI provider, determines the required NASA information, and produces the structured planner result.
 
-`backend/api/`
-The main Django application containing the application's models, API logic, serializers, authentication-related functionality, and planner implementation.
+**`backend/api/models.py`**
+Contains the Django database models, including users, Space Plans, and discoveries.
 
-`backend/api/engine/space_planner.py`
-Contains the main AI Space Planner logic. It processes user requests, works with the configured AI model, determines the required NASA data, and produces the structured planner result.
+**`backend/api/serializers.py`**
+Contains Django REST Framework serializers for converting database objects to API responses.
 
-`backend/api/models.py`
-Contains the database models used by the application, including users, Space Plans, and discoveries.
+**`backend/api/views.py`**
+Contains the API views responsible for authentication and Space Plan operations.
 
-`backend/api/serializers.py`
-Contains Django REST Framework serializers used to convert database objects to and from API data.
+**`backend/api/urls.py`**
+Defines the backend API routes.
 
-`backend/api/views.py`
-Contains the API views responsible for handling authentication, Space Plan creation, retrieval, and deletion.
+**`backend/api/migrations/`**
+Contains Django database migrations.
 
-`backend/api/urls.py`
-Defines the API routes for the Django application.
+**`backend/requirements.txt`**
+Contains the Python packages required by the backend.
 
-`backend/api/migrations/`
-Contains Django database migrations for the application's models.
+### Important Frontend Directories
 
-### Frontend
+**`frontend/src/api/`**
+Contains Axios configuration and functions used to communicate with the Django API.
 
-`frontend/src/api/`
-Contains the Axios configuration and functions used to communicate with the Django backend.
+**`frontend/src/components/`**
+Contains reusable React components such as the navigation bar, history sidebar, prompt interface, and discovery cards.
 
-`frontend/src/components/`
-Contains reusable React components such as the navigation bar, history sidebar, discovery cards, and other interface components.
+**`frontend/src/context/`**
+Contains shared React state such as authentication state.
 
-`frontend/src/context/`
-Contains React context used for application-wide state such as authentication.
+**`frontend/src/pages/`**
+Contains the application's major pages.
 
-`frontend/src/pages/`
-Contains the major application pages, including authentication and the main Space Planner interface.
+**`frontend/src/styles/`**
+Contains the application's CSS.
 
-`frontend/src/styles/`
-Contains the CSS used to style the application's components and pages.
+**`frontend/src/types/`**
+Contains TypeScript definitions for backend data structures.
 
-`frontend/src/types/`
-Contains TypeScript type definitions for data received from the backend, including Space Plans and discoveries.
+**`frontend/src/App.tsx`**
+Defines the main React application and routing structure.
 
-`frontend/src/App.tsx`
-Defines the main React application structure and routing.
+**`frontend/src/main.tsx`**
+Entry point for the React application.
 
-`frontend/src/main.tsx`
-The entry point of the React application.
+**`frontend/package.json`**
+Contains frontend dependencies and development scripts.
 
-`frontend/package.json`
-Contains the frontend dependencies and scripts required to run the React application.
+---
 
-## How to Run
+# Complete Setup
 
-### Requirements
-
-The following should be installed:
-
+## Requirements
 * Python 3
 * Node.js and npm
 * Git
+* A NASA API key
+* An OpenRouter API key
 
-### 1. Clone the repository
+---
+
+# 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Tamercan1/ai-nasa-space-planner-cs50w.git
-cd ai-space-planner
+cd ai-nasa-space-planner-cs50w
 ```
 
-### 2. Set up the backend
+---
+
+# 2. NASA API Setup
+
+The project uses NASA APIs to retrieve space-related information.
+
+NASA provides an API key through its API portal.
+
+### Get a NASA API Key
+
+1. Go to the NASA API portal:
+   https://api.nasa.gov/
+2. Enter your name and email address.
+3. Request an API key.
+4. Copy the generated API key.
+
+NASA also provides a `DEMO_KEY`, but using your own key is recommended for normal development because the demo key has lower usage limits.
+
+Add your key to your backend environment file.
+
+Example:
+
+```env
+NASA_API_KEY=your_nasa_api_key
+```
+
+#### More of the .env at `4. Environment Variables`
+
+---
+
+# 3. OpenRouter Setup
+
+The project uses OpenRouter to access the configured AI model.
+
+### Get an OpenRouter API Key
+
+1. Create an account at:
+   https://openrouter.ai/
+2. Open your account's API key section.
+3. Create a new API key.
+4. Copy the key.
+
+Add it to your backend environment file.
+
+Example:
+
+```env
+OPENROUTER_API_KEY=your_openrouter_api_key
+```
+
+Optionally, you will also want to configure the AI model/provider
+
+For example:
+
+```env
+# This is optional - default is openrouter/free for free models
+LLM_MODEL=your_model_name (optional) - default is openrouter/free for free models
+```
+
+Use the model name supported by your current OpenRouter configuration.
+
+---
+
+# 4. Environment Variables
+
+Create a `.env` file inside the backend directory.
+
+Provide:
+
+```env
+
+# NASA
+NASA_API_KEY=your_nasa_api_key
+
+# AI Provider
+OPENROUTER_API_KEY=your_openrouter_api_key
+
+# This is optional - default is openrouter/free for free models
+LLM_MODEL=your_model_name 
+```
+
+---
+
+# 5. Backend Setup
+
+Open a terminal:
 
 ```bash
 cd backend
+```
+
+Create a virtual environment:
+
+```bash
 python -m venv venv
 ```
 
-On Windows:
+### Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-On macOS/Linux:
+### macOS/Linux
 
 ```bash
 source venv/bin/activate
 ```
 
-Install the Python dependencies:
+Install the required Python packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create the required environment variables for Django, the NASA API, and the configured AI provider.
-
-Run the database migrations:
+Run Django migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-Start the Django development server:
+Start the backend:
 
 ```bash
 python manage.py runserver
 ```
 
-### 3. Set up the frontend
+The Django development server will normally run at:
 
-Open another terminal:
+```text
+http://127.0.0.1:8000/
+```
+
+Keep this terminal running.
+
+---
+
+# 6. Frontend Setup
+
+Open another terminal and go to the frontend:
 
 ```bash
 cd frontend
+```
+
+Install the JavaScript dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-The frontend will then be available at the local address provided by Vite.
+The terminal will display the local frontend URL, normally something similar to:
 
-Both the Django backend and React frontend must be running for the application to function.
+```text
+http://localhost:5173/
+```
 
-## Additional Information
+Paste that in your browser.
 
-The application requires API credentials for the external services used by the project. These credentials should be stored in environment variables and should not be committed to the repository.
+Both the Django backend and React frontend must be running.
 
-The AI Space Planner expects structured information from the AI layer. Pydantic validation is used to help ensure that the planner output follows the expected structure before it is saved to the database.
+---
 
-The project uses JWT authentication to protect user-specific functionality. A user's saved Space Plans are associated with their account, and backend filtering is used to ensure that users can only access their own plans.
+# 7. Create an Account
 
-The current version is the **CS50W MVP (v1)**. The project may be developed further after the course with additional deployment, performance, and functionality improvements, but those improvements are outside the scope of this submission.
+After opening the frontend:
+
+1. Register a new account.
+2. Log in.
+3. Enter a natural-language space request.
+4. Submit the request.
+5. Wait for the AI planner and NASA APIs to process the request.
+6. Explore the generated discoveries.
+7. Open the history sidebar to revisit previous plans.
+
+---
+
+# Example Prompts
+
+You can try prompts such as:
+
+```text
+Show me interesting astronomy events from this week.
+```
+
+```text
+What asteroids are currently passing relatively close to Earth?
+```
+
+```text
+Tell me about an interesting NASA image from today.
+```
+
+```text
+What solar activity has NASA recently recorded?
+```
+
+The AI planner determines whether the request requires NASA data and which available NASA services are relevant.
+
+---
+
+# Additional Information
+
+The project uses Pydantic to validate structured information produced by the AI planning layer before it is used by the application.
+
+The database stores generated Space Plans so users can return to previously generated results instead of generating everything again.
+
+The current version represents the **CS50W MVP (v1)**. Future development may include deployment, additional NASA services, performance improvements, and additional planner capabilities.
 
 This project was created as the final project for **CS50's Web Programming with Python and JavaScript (CS50W)**.

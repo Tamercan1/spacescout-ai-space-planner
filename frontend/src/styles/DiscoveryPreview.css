@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
-    min-height: 200px;
+    min-height: 190px;
     padding: 15px;
     margin: 5px;
     margin-bottom: 10px;
@@ -30,15 +30,42 @@
 
 .apod { 
     background-color: rgba(96, 165, 250, 0.1); 
-} 
+}
+.apod:hover {
+    transform: translateY(-5px); 
+    border-color: #2563EB;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgb(37, 99, 235,0.15);
+}
+
 .neo {
     background-color: rgba(248, 113, 113, 0.1);
 }
+.neo:hover {
+    transform: translateY(-5px); 
+    border-color: #DC2626;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgb(220, 38, 38, 0.15);
+}
+
 .solar_flare {
     background-color: rgba(251, 191, 36, 0.1);
 } 
+.solar_flare:hover {
+    transform: translateY(-5px); 
+    border-color: #CA8A04;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgb(202, 138, 4, 0.15);
+}
+
 .general {
     background-color: rgba(52, 211, 153, 0.1);
+}
+.general:hover {
+    transform: translateY(-5px); 
+    border-color: #059669;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgb(5, 150, 105, 0.15);
 }
 
 .strong-apod {
@@ -70,13 +97,13 @@
     font-size: small;
 }
 
-.discovery-preview:hover {
+/* .discovery-preview:hover {
     transform: translateY(-5px); 
     border-color: #4e06d4;
     cursor: pointer;
   
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); 
-}
+} */
 
 .date-type {
     display: flex;

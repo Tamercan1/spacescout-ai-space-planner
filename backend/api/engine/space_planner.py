@@ -11,38 +11,22 @@ from api.engine.model_switch import call_llm_with_fallback, AllModelsFailedError
 
 load_dotenv()
 
-PROVIDER = os.getenv("LLM_PROVIDER", "openrouter")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-PROVIDER_CONFIG = {
-    "gemini": {
-        "api_key": os.getenv("GEMINI_API_KEY"),
-        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-        "models": [
-            "gemini-3.8-flash",
-            "gemma-4-26b-a4b-it",
-            "gemini-3-flash",
-            "gemini-2.5-flash" 
-        ]
-    },
-    "openrouter": {
-        "api_key": os.getenv("OPENROUTER_API_KEY"),
-        "base_url": "https://openrouter.ai/api/v1",
-        "models": [
-            "dots-studio/dots-3-note-preview:free",
-            "openrouter/free",
-        ]
-    }
-}
-
-config = PROVIDER_CONFIG[PROVIDER] # Provider is either gemini or openrouter
+LLM_MODEL = os.getenv("LLM_MODEL")
 
 client = OpenAI(
-    api_key=config["api_key"],
-    base_url=config["base_url"]
+    api_key=OPENROUTER_API_KEY,
+    base_url=OPENROUTER_BASE_URL
 )
 
+MODELS_LIST = []
 
-MODELS_LIST = config["models"]
+if LLM_MODEL:
+    MODELS_LIST.append(LLM_MODEL)
+
+MODELS_LIST.append("openrouter/free")
 
 MAX_TOOL_ROUNDS = 5
 MAX_DISCOVERIES = 10

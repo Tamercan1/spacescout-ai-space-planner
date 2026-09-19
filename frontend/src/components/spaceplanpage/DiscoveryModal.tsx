@@ -1,13 +1,13 @@
 import type { Discovery } from "../../types/planner";
 import { FileText, ScrollText, Rocket, List } from "lucide-react";
-import "../../styles/DiscoveryCard.css";
+import "../../styles/DiscoveryModal.css";
 
-interface DiscoveryCardProp {
+interface DiscoveryModalProp {
     discovery: Discovery;
     setSelectedCard: (card: Discovery | null) => void;
 }
 
-function DiscoveryCard({discovery, setSelectedCard}: DiscoveryCardProp) {
+function DiscoveryModal({discovery, setSelectedCard}: DiscoveryModalProp) {
     let formattedDate = null;
 
     if (discovery.date) {
@@ -78,4 +78,4 @@ function DiscoveryCard({discovery, setSelectedCard}: DiscoveryCardProp) {
     )
 }
 
-export default DiscoveryCard
+export default DiscoveryModal

@@ -1,6 +1,6 @@
 import type { Discovery, SpacePlan } from "../../types/planner"
 import DiscoveryPreview from "./DiscoveryPreview";
-import DiscoveryCard from "./DiscoveryCard";
+import DiscoveryModal from "./DiscoveryModal";
 import PromptPreview from "./PromptPreview";
 import { formatToShortDate } from "../../func/parsedate";
 import "../../styles/RenderSpacePlan.css";
@@ -43,7 +43,7 @@ function RenderSpacePlan({spacePlan, selectedDiscoveryCard, setSelectedDiscovery
 
                     {filteredDiscoveries.length === 0 && (
                         <div className="discovery-empty">
-                            <h3 className="soft">No discoveries for that category</h3>
+                            <h3 className="soft">No discoveries for this category</h3>
                         </div>
                     )}
                     
@@ -67,7 +67,7 @@ function RenderSpacePlan({spacePlan, selectedDiscoveryCard, setSelectedDiscovery
                             <div
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <DiscoveryCard discovery={selectedDiscoveryCard} setSelectedCard={setSelectedDiscoveryCard}/>
+                                <DiscoveryModal discovery={selectedDiscoveryCard} setSelectedCard={setSelectedDiscoveryCard}/>
                             </div>
                         </div>
                     )}
