@@ -1,0 +1,124 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* background-color: #263242; */
+
+    background-color: #172033;
+    color: #ffffff;
+
+    padding-inline: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.history-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.navbar h1 {
+    flex: 1;
+    text-align: center;
+}
+
+.mobile-title {
+    display: none;
+}
+
+.account-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.account-toggle {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 6px 9px;
+    cursor: pointer;
+    /* border-radius: 6px; */
+    border-radius: 30px;
+}
+
+.account-toggle:hover {
+    background-color: #243247;;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 180px;
+    background-color: white;
+    color: #1f2937;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    z-index: 1100;
+}
+
+.account-username {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: #64748b;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 11px 14px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    color: #374151;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #f1f5f9;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+
+        min-height: 60px;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .navbar h1 {
+        flex: 1;
+        text-align: center;
+        font-size: 1.15rem;
+        min-width: 0;
+    }
+
+    /* hide desktop layout for title */
+    .desktop-title {
+        display: none;
+    }
+
+    .mobile-title {
+        display: inline;
+    }
+
+    .logout-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+}

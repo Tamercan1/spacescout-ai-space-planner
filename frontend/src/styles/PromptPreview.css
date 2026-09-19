@@ -1,0 +1,15 @@
+details:hover {
+    cursor: pointer;
+}
+
+details .view-prompt {
+    user-select: none;
+}
+
+details p {
+    border: 1px solid #E2E8F0;
+    border-radius: 15px;
+    background-color: #F8FAFC;
+    padding: 1vh;
+    padding-left: 2rem;
+}

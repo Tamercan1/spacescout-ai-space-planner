@@ -1,0 +1,203 @@
+/* 
+    I HAD AI HELP ME WITH THIS
+*/
+
+.planner-loading {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    animation: loadingFadeIn 0.5s ease;
+}
+
+.loading-orbit {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbit-ring {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: 1px solid rgba(78, 6, 212, 0.25);
+    border-radius: 50%;
+}
+
+.orbit-ring-one {
+    transform: rotate(60deg) scaleX(1.5);
+    animation: orbitRotate 5s linear infinite;
+}
+
+.orbit-ring-two {
+    transform: rotate(-60deg) scaleX(1.5);
+    animation: orbitRotateReverse 7s linear infinite;
+}
+
+.loading-planet {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #4e06d4,
+        #7c3aed
+    );
+    box-shadow:
+        0 0 20px rgba(78, 6, 212, 0.35),
+        0 0 40px rgba(78, 6, 212, 0.15);
+    animation: planetPulse 2s ease-in-out infinite;
+}
+
+.loading-planet span {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 10px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    transform: rotate(-25deg);
+}
+
+.loading-content h2 {
+    margin: 0 0 15px;
+    font-size: 1.4rem;
+    color: #1f2937;
+}
+
+.loading-message {
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-message p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 1rem;
+    animation: messageFade 0.5s ease;
+}
+
+.loading-content small {
+    display: block;
+    margin-top: 20px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+.loading-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #9ca3af;
+    animation: dotBounce 1.4s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes messageFade {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spinnerRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes planetPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes orbitRotate {
+    from {
+        transform: rotate(60deg) scaleX(1.5);
+    }
+
+    to {
+        transform: rotate(420deg) scaleX(1.5);
+    }
+}
+
+@keyframes orbitRotateReverse {
+    from {
+        transform: rotate(-60deg) scaleX(1.5);
+    }
+
+    to {
+        transform: rotate(-420deg) scaleX(1.5);
+    }
+}
+
+@keyframes dotBounce {
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}

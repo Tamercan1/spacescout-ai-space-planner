@@ -1,0 +1,91 @@
+.discovery-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    min-height: 200px;
+    padding: 15px;
+    margin: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    overflow: auto;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    h3 {
+        margin: 0;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        text-align: left;
+    }
+}
+
+.apod, .neo, .solar_flare, .general {
+  border: 1px solid #e2e4ea;
+  color: #14171f;
+}
+
+.apod { 
+    background-color: rgba(96, 165, 250, 0.1); 
+} 
+.neo {
+    background-color: rgba(248, 113, 113, 0.1);
+}
+.solar_flare {
+    background-color: rgba(251, 191, 36, 0.1);
+} 
+.general {
+    background-color: rgba(52, 211, 153, 0.1);
+}
+
+.strong-apod {
+    color: #2563EB;
+    font-weight: 600;
+    font-size: small;
+}
+
+.strong-neo {
+    color: #DC2626;
+    font-weight: 600;
+    font-size: small;
+}
+
+.strong-solar_flare {
+    color: #CA8A04;
+    font-weight: 600;
+    font-size: small;
+}
+
+.strong-general {
+    color: #059669;
+    font-weight: 600;
+    font-size: small;
+}
+
+.soft {
+    color: #6b7280;
+    font-size: small;
+}
+
+.discovery-preview:hover {
+    transform: translateY(-5px); 
+    border-color: #4e06d4;
+    cursor: pointer;
+  
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); 
+}
+
+.date-type {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+    .discovery-preview {
+        margin: 5px 0 10px;
+        z-index: 0;
+    }
+}

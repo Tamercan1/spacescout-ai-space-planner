@@ -1,0 +1,85 @@
+.spaceplan-container {
+    border: 1px solid #E2E8F0;
+    padding: 10px;
+    margin: 15px 5px 1px 5px;
+    border-radius: 10px;
+}
+
+.spaceplan-container .title-summary {
+    padding-left: 10px;
+
+    span {
+        font-size: small;
+        margin-top: 1vh;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin-block: 1.3rem;
+    }
+
+    p {
+        color: #1E293B;
+        line-height: 1.4;
+    }
+}
+
+.discovery-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 1rem;
+    padding: 10px 20px 20px 10px;
+    box-sizing: border-box;
+    overflow: auto;
+
+    button {
+        border: 1px solid #e2e4ea;
+        background-color: transparent;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: small;
+        color: #6b7280;
+    }
+    button:hover {
+        background-color: #1E293B;
+        color: #ffff;
+    }
+
+    .active {
+        background-color: #1E293B;
+        color: #ffff;
+    }
+}
+
+.spaceplan-container .heading {
+    padding-left: 10px;
+}
+
+.discoveries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.discovery-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35vh;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
