@@ -25,6 +25,7 @@
 .navbar h1 {
     flex: 1;
     text-align: center;
+    font-size: 1.8rem;
 }
 
 .mobile-title {
@@ -96,7 +97,7 @@
         top: 0;
         z-index: 50;
 
-        min-height: 60px;
+        min-height: 50px;
         padding: 8px 12px;
         gap: 10px;
     }
@@ -104,7 +105,7 @@
     .navbar h1 {
         flex: 1;
         text-align: center;
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         min-width: 0;
     }
 

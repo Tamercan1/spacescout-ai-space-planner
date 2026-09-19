@@ -30,11 +30,11 @@ function Navbar({historyToggle}: {historyToggle: () => void}) {
 
             <h1>    
                 <span className="desktop-title">
-                    AI Powered NASA Space Planner
+                    SpaceScout · AI Space Planner
                 </span>
 
                 <span className="mobile-title">
-                    AI Space Planner
+                    SpaceScout
                 </span>
             </h1>
             

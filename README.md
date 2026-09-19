@@ -1,8 +1,8 @@
-# AI Space Planner
+# SpaceScout - AI Space Planner
 
-AI Space Planner is a web application that lets users explore space-related information through natural-language requests.
+SpaceScout is a web application that lets users explore space-related information through natural-language requests.
 
-Instead of requiring users to know which NASA API to use or how to structure a query, the application uses an AI model to interpret the request, determine what information is needed, retrieve relevant NASA data, and organize the results into a structured Space Plan.
+Instead of requiring users to know which NASA API to use or how to structure a query, the SpaceScout application uses an AI model to interpret the request, determine what information is needed, retrieve relevant NASA data, and organize the results into a structured Space Plan.
 
 Users can:
 
@@ -21,7 +21,7 @@ The application uses a React frontend and Django REST backend with database pers
 
 ## Distinctiveness and Complexity
 
-AI Space Planner is distinct from the other CS50W projects because it is neither a social network nor an e-commerce application. Its main purpose is to provide an AI-assisted interface for exploring external scientific data.
+SpaceScout is distinct from the other CS50W projects because it is neither a social network nor an e-commerce application. Its main purpose is to provide an AI-assisted interface for exploring external scientific data.
 
 The central workflow is more complex than a basic CRUD application:
 
@@ -39,7 +39,7 @@ The application integrates several independent systems, including Django, a rela
 
 The backend also implements user-specific data access. Saved Space Plans belong to individual users, and backend authorization prevents users from retrieving or deleting plans belonging to another account.
 
-This makes the project substantially different from applications primarily focused on posts, messages, listings, bidding, or other traditional CRUD workflows.
+This makes SpaceScout substantially different from applications primarily focused on posts, messages, listings, bidding, or other traditional CRUD workflows.
 
 ---
 
@@ -54,7 +54,7 @@ This makes the project substantially different from applications primarily focus
 * Protected routes
 * User-specific Space Plan history
 
-### AI Space Planner
+### AI Planning
 
 * Natural-language prompts
 * AI-assisted planning
@@ -191,8 +191,8 @@ Contains frontend dependencies and development scripts.
 # 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Tamercan1/ai-nasa-space-planner-cs50w.git
-cd ai-nasa-space-planner-cs50w
+git clone https://github.com/Tamercan1/spacescout-ai-space-planner.git
+cd spacescout-ai-space-planner
 ```
 
 ---
