@@ -1,7 +1,6 @@
 annotated-types==0.8.0
 anyio==4.14.2
 asgiref==3.12.1
--e file:///C:/Users/Rasul/Desktop/FINAL%20CS50W%20PROJECT/backend
 certifi==2026.7.22
 django==6.1
 django-cors-headers==4.9.0
