@@ -17,9 +17,12 @@ Users can:
 
 The application uses a React frontend and Django REST backend with database persistence and JWT authentication.
 
+## Why did i built this?
+I built SpaceScout because I found that exploring NASA's APIs can be a bit overwhelming. There are different APIs for different kinds of space data, and figuring out which one to use for a particular question isn't always straightforward. So I wanted to build something that could take a simple question, figure out what information is relevant, and bring the results together in one place.
+
 ---
 
-## Distinctiveness and Complexity
+# Distinctiveness and Complexity
 
 SpaceScout is distinct from the other CS50W projects because it is neither a social network nor an e-commerce application. Its main purpose is to provide an AI-assisted interface for exploring external scientific data.
 
@@ -42,6 +45,16 @@ The backend also implements user-specific data access. Saved Space Plans belong 
 This makes SpaceScout substantially different from applications primarily focused on posts, messages, listings, bidding, or other traditional CRUD workflows.
 
 ---
+
+# Project Screenshots
+**Home Page**
+![Home Page](images/homepage.png)
+
+**Discoveries**
+![Discoveries](images/space-discoveries.png)
+
+**Discovery Expanded Example**
+![Discovery Example](images/space-discovery-apod.png)
 
 ## Features
 
