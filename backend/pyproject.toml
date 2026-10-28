@@ -10,7 +10,7 @@ requires-python = ">=3.12"
 dependencies = [
     "django>=6.1",
     "django-cors-headers>=4.9.0",
-    "djangorestframework>=3.18.0",
+    "djangorestframework>=3.18.2",
     "djangorestframework-simplejwt>=5.5.1",
     "httpx>=0.28.1",
     "openai>=3.6.0",
